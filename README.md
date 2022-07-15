@@ -35,10 +35,7 @@ instructions to get you started.
 
 You will build a hangman app with the following screens:
 
-<img src="main.png" alt="main" width="150" />
-<img src="gameplay.png" alt="gameplay" width="150" />
-<img src="gameplaytimesup.png" alt="gameplay time is up" width="150" />
-<img src="leaderboard.png" alt="leaderboard" width="150" />
+<img src="main.png" alt="main" width="150" /> &nbsp; <img src="gameplay.png" alt="gameplay" width="150" /> &nbsp; <img src="gameplaytimesup.png" alt="gameplay time is up" width="150" /> &nbsp; <img src="leaderboard.png" alt="leaderboard" width="150" />
 
 * Hangman drawing:
     * Resets with every new word.
@@ -76,10 +73,14 @@ you will be including in your game.
 In addition, in order to get random words on every round, you should pass a random page number as a query parameter to
 the endpoint.
 
-> **Note**: An API key is required to run the query: <br/>
-> You can use `0189ad5be185d0efe0ef8b1ccd3c7462` or obtain a free api key
-> by signing up [here](https://www.themoviedb.org/signup) and
-> following [these instructions](https://developers.themoviedb.org/3/getting-started/introduction).
+> **Note**: An API key is required to run the query. In order to get one, please follow this steps: <br/>
+> 2. Sign up in [https://www.themoviedb.org/signup](https://www.themoviedb.org/signup)
+> 3. Click on you avatar or initials and go to settings.
+> 4. Click on the "API" link in the left sidebar.
+> 5. Click "Create" or "click here" under Request an API section.
+>
+> If you need more information, please go to the API
+> documentation [here](https://developers.themoviedb.org/3/getting-started/introduction)
 
 ## Requirements
 
