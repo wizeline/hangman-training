@@ -73,11 +73,12 @@ you will be including in your game.
 In addition, in order to get random words on every round, you should pass a random page number as a query parameter to
 the endpoint.
 
-> **Note**: An API key is required to run the query. In order to get one, please follow this steps: <br/>
-> 2. Sign up in [https://www.themoviedb.org/signup](https://www.themoviedb.org/signup)
-> 3. Click on you avatar or initials and go to settings.
-> 4. Click on the "API" link in the left sidebar.
-> 5. Click "Create" or "click here" under Request an API section.
+> **Note**: An API key is required to run the query. In order to get one, please follow this steps:
+> 
+> 1. Sign up in [https://www.themoviedb.org/signup](https://www.themoviedb.org/signup)
+> 2. Click on you avatar or initials and go to settings.
+> 3. Click on the "API" link in the left sidebar.
+> 4. Click "Create" or "click here" under Request an API section.
 >
 > If you need more information, please go to the API
 > documentation [here](https://developers.themoviedb.org/3/getting-started/introduction)
