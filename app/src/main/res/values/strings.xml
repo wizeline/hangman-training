@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Hangman</string>
+    <string name="app_date">Wizeline 2022</string>
+    <string name="home_title">Hangman</string>
+    <string name="home_subtitle">-A Wizeline Academy Project</string>
+    <string name="home_executor_label">Excecutor\'s name</string>
+    <string name="home_edit_placeholder">e.g. hangaman master</string>
+    <string name="home_start_btn">Start</string>
 </resources>
