@@ -6,4 +6,5 @@
     <string name="home_executor_label">Excecutor\'s name</string>
     <string name="home_edit_placeholder">e.g. hangaman master</string>
     <string name="home_start_btn">Start</string>
+    <string name="wave_content_description">image_wave</string>
 </resources>
