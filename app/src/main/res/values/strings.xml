@@ -7,4 +7,8 @@
     <string name="home_edit_placeholder">e.g. hangaman master</string>
     <string name="home_start_btn">Start</string>
     <string name="wave_content_description">image_wave</string>
+    <string name="game_title">Don\'t let them hang me!</string>
+    <string name="hangman_image">hangman_image</string>
+    <string name="game_next_btn">Next</string>
+    <string name="game_hint_btn">Hint</string>
 </resources>

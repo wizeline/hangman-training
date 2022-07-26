@@ -8,6 +8,114 @@
     android:background="@drawable/gradient_background"
     android:padding="@dimen/padding_screen">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/footer_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/game_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_regular"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="03:45" />
+
+        <TextView
+            android:id="@+id/game_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_subtitle"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/game_word"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Score: 24" />
+
+        <TextView
+            android:id="@+id/game_word"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_regular"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="7/10" />
+
+        <TextView
+            android:id="@+id/game_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_form"
+            android:text="@string/game_title"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_subtitle"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/game_score" />
+
+        <ImageView
+            android:id="@+id/game_hangman"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="@dimen/margin_form"
+            android:contentDescription="@string/hangman_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/game_title"
+            app:tint="@color/white"
+            tools:src="@drawable/hangman_10" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/game_words"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/margin_form"
+            android:layout_marginTop="@dimen/margin_form"
+            android:background="@drawable/border_edittext"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/game_hangman">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/game_hint_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gold"
+            android:paddingStart="@dimen/padding_screen_big"
+            android:paddingEnd="@dimen/padding_screen_big"
+            android:layout_marginStart="@dimen/padding_screen_small"
+            android:text="@string/game_next_btn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/game_next_btn"
+            app:layout_constraintTop_toBottomOf="@+id/game_words" />
+
+        <Button
+            android:id="@+id/game_next_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/teal_700"
+            android:paddingStart="@dimen/padding_screen_big"
+            android:paddingEnd="@dimen/padding_screen_big"
+            android:text="@string/game_hint_btn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/game_hint_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/game_words" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <include
         android:id="@+id/footer_view"
         layout="@layout/footer"
