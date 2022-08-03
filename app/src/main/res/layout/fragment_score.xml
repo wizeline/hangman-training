@@ -6,15 +6,110 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
-    android:padding="@dimen/padding_screen">
+    android:fitsSystemWindows="true">
 
-    <include
-        android:id="@+id/footer_view"
-        layout="@layout/footer"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:padding="@dimen/padding_screen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/score_sparkles_left"
+            android:layout_width="@dimen/image_size"
+            android:layout_height="@dimen/image_size"
+            android:contentDescription="@string/hangman_image"
+            android:src="@drawable/ic_baseline_auto_awesome_24"
+            app:layout_constraintBottom_toBottomOf="@+id/score_title"
+            app:layout_constraintEnd_toStartOf="@+id/score_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/score_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/score_game_over"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_subtitle"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/padding_screen_big"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/score_sparkles_right"
+            android:layout_width="@dimen/image_size"
+            android:layout_height="@dimen/image_size"
+            android:contentDescription="@string/hangman_image"
+            android:src="@drawable/ic_baseline_auto_awesome_24"
+            app:layout_constraintBottom_toBottomOf="@+id/score_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/score_title"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/score_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/score_top_ten"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_regular"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/padding_screen_big"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/score_sparkles_left" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/score_listview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_edittext"
+            android:orientation="vertical"
+            android:clipToPadding="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/score_subtitle"
+            android:layout_marginTop="@dimen/padding_screen"
+            tools:listitem="@layout/item_score"
+            tools:itemCount="10"/>
+
+        <Button
+            android:id="@+id/score_btn_retry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue_200"
+            android:layout_marginTop="@dimen/padding_screen_big"
+            android:text="@string/score_btn_start"
+            app:layout_constraintTop_toBottomOf="@+id/score_listview"
+            />
+
+
+        <Button
+            android:id="@+id/score_btn_finish"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/red"
+            android:text="@string/score_btn_finish"
+            app:layout_constraintTop_toBottomOf="@+id/score_btn_retry"
+            />
+
+        <include
+            android:id="@+id/footer_view"
+            layout="@layout/footer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

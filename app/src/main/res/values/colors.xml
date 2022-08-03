@@ -13,5 +13,7 @@
     <color name="turquoise">#4FD3C4</color>
     <color name="green">#A9E4D7</color>
     <color name="gold">#B6C343</color>
+    <color name="red">#D01843</color>
+    <color name="blue_200">#25ACD5</color>
 
 </resources>

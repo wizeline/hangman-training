@@ -14,10 +14,13 @@
         <entry key="app/src/main/res/drawable/hangman_9.xml" value="0.265" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.201" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2078804347826087" />
+        <entry key="app/src/main/res/layout/dialog_game.xml" value="0.18631006346328197" />
         <entry key="app/src/main/res/layout/footer.xml" value="0.17999144933732364" />
-        <entry key="app/src/main/res/layout/fragment_game.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/fragment_game.xml" value="0.2547945205479452" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22030825022665457" />
         <entry key="app/src/main/res/layout/fragment_score.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/item_letter.xml" value="0.142368533561351" />
+        <entry key="app/src/main/res/layout/item_score.xml" value="0.25" />
       </map>
     </option>
   </component>
