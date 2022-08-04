@@ -15,7 +15,7 @@ interface ScoreDao {
     @Query("DELETE FROM score")
     fun delete()
 
-    @Query("SELECT id, score, userName  FROM score ORDER BY score LIMIT 10")
+    @Query("SELECT * FROM score ORDER BY score DESC LIMIT 10")
     fun getScores(): List<Score>
 
     @Query("UPDATE  score SET score=:score WHERE userName = :userName ")

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
@@ -30,8 +31,10 @@ class GameFragment: Fragment() {
     private lateinit var navController: NavController
 
     private lateinit var gameAdapter: GameAdapter
+    private var dialog: Dialog? = null
     private var userName = ""
     private var score = 0
+    private var pictureCounter = 1
 
 
     override fun onCreateView(
@@ -51,6 +54,7 @@ class GameFragment: Fragment() {
         val args = GameFragmentArgs.fromBundle(requireArguments())
         userName = args.name
         gameAdapter = GameAdapter()
+        dialog = context?.let { Dialog(it) }
         setFooter()
         initView(userName)
         buttonListeners()
@@ -58,11 +62,21 @@ class GameFragment: Fragment() {
         getMovie()
     }
 
+    private fun initView(userName: String){
+        navController = findNavController()
+        binding?.gameUsername?.text = userName
+        setLayoutManager()
+        viewModel.runTimer()
+        setTime(TIME_SECONDS)
+        setWordCounter(1)
+        setScore(0)
+        showPicture(0)
+    }
+
     private fun initObservers(){
         viewModel.apply {
             movie.observe(viewLifecycleOwner) {
                 if (it?.isNotEmpty() == true) {
-                    binding?.word?.text = it.joinToString("")
                     binding?.wordList?.adapter = gameAdapter
                     gameAdapter.submitList(it.toGameAdapter())
                 }
@@ -73,7 +87,7 @@ class GameFragment: Fragment() {
             }
 
             timer.observe((viewLifecycleOwner)){
-                setCounter(it)
+                setTime(it)
             }
 
             //Word Counter
@@ -90,8 +104,12 @@ class GameFragment: Fragment() {
 
     private fun buttonListeners(){
 
-        binding?.gameHintBtn?.setOnClickListener {  }
+        binding?.gameHintBtn?.setOnClickListener {
+            setHint()
+        }
         binding?.gameNextBtn?.setOnClickListener {
+            pictureCounter = 0
+            showPicture(0)
             getMovie()
         }
     }
@@ -107,26 +125,24 @@ class GameFragment: Fragment() {
             getMovie()
         }
     }
-    private fun initView(userName: String){
-        navController = findNavController()
-        binding?.gameUsername?.text = userName
-        setLayoutManager()
-        viewModel.runTimer()
-        setTime(TIME_SECONDS)
-        setWordCounter(0)
-        setScore(0)
-    }
 
     private fun setLayoutManager(){
         val layoutManager = FlexboxLayoutManager(context)
         layoutManager.apply {
             flexDirection = FlexDirection.ROW
-            justifyContent = JustifyContent.CENTER
+            justifyContent = JustifyContent.FLEX_START
             flexWrap = FlexWrap.WRAP
         }
         binding?.wordList?.layoutManager = layoutManager
     }
 
+    //Completes the current word without giving points.
+    private fun setHint(){
+        val data = gameAdapter.currentList.toList()
+        gameAdapter.submitList(data.showWord())
+        gameAdapter.notifyDataSetChanged()
+        showPicture(10)
+    }
 
     private fun setTime(time: Long){
         binding?.gameTime?.text = time.timerFormat()
@@ -144,22 +160,49 @@ class GameFragment: Fragment() {
     private fun endGame(){
         viewModel.saveScore(userName, score)
         viewModel.resetData()
+        setScore(0)
         showDialog()
     }
 
     private fun searchLetter(letter: String){
 
-        val filterData = gameAdapter.currentList.toList()
-        if(filterData.hasLetter(letter)){
-            if(!filterData.isVisible(letter)){
-                setScore(CORRECT_GUESS)
+        if(pictureCounter >= MAX_ATTEMPTS){
+            setHint()
+            Toast.makeText(context, getString(R.string.game_attempts_max), Toast.LENGTH_SHORT).show()
+        } else {
+            val filterData = gameAdapter.currentList.toList()
+            if (filterData.hasLetter(letter)) {
+                if (!filterData.isVisible(letter)) {
+                    setScore(CORRECT_GUESS)
+                }
+                gameAdapter.submitList(filterData.setVisibleLetter(letter))
+                gameAdapter.notifyDataSetChanged()
+                checkWordGuessed()
+            } else {
+                setScore(INCORRECT_GUESS)
+                showPicture(pictureCounter)
             }
-            gameAdapter.submitList(filterData.setVisibleLetter(letter))
-            gameAdapter.notifyDataSetChanged()
-            checkWordGuessed()
-        }else{
-            setScore(INCORRECT_GUESS)
         }
+    }
+
+    private fun showPicture(number: Int){
+
+        val drawable: Int = when(number){
+            1 -> R.drawable.hangman_1
+            2 -> R.drawable.hangman_2
+            3 -> R.drawable.hangman_3
+            4 -> R.drawable.hangman_4
+            5 -> R.drawable.hangman_5
+            6 -> R.drawable.hangman_6
+            7 -> R.drawable.hangman_7
+            8 -> R.drawable.hangman_8
+            9 -> R.drawable.hangman_9
+            10 -> R.drawable.hangman_10
+            else -> R.drawable.ic_baseline_play_arrow_24
+        }
+
+        pictureCounter ++
+        binding?.imageHangman?.setImageDrawable(context?.let { ContextCompat.getDrawable(it, drawable) })
     }
 
     private fun setFooter(){
@@ -168,18 +211,17 @@ class GameFragment: Fragment() {
     }
 
     private fun showDialog(){
-        val dialog = context?.let { Dialog(it) }
 
         dialog?.setContentView(R.layout.dialog_game)
         dialog?.setCancelable(false);
         dialog?.show()
         val tryAgainBtn: Button = dialog?.findViewById(R.id.dialog_again) as Button
         tryAgainBtn.setOnClickListener(View.OnClickListener {
-            dialog.dismiss()
+            dialog?.dismiss()
         })
-        val leaderboardBtn: Button = dialog.findViewById(R.id.dialog_leaderboard) as Button
+        val leaderboardBtn: Button = dialog?.findViewById(R.id.dialog_leaderboard) as Button
         leaderboardBtn.setOnClickListener(View.OnClickListener {
-            dialog.dismiss()
+            dialog?.dismiss()
             GameFragmentDirections.actionGameFragmentToScoreFragment(userName).let {
                 navController.navigate(it)
             }
@@ -190,6 +232,7 @@ class GameFragment: Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        dialog?.dismiss()
         _binding = null
     }
 }

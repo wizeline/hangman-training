@@ -18,7 +18,7 @@ class HangmanRepository @Inject constructor(
     // get Movie
     fun getMovie(): Single<MoviesRespose> {
 
-        val randomPage = Random.nextInt(0, 100)
+        val randomPage = (1..100).random()
         return client.getMovie(page = randomPage)
     }
 
@@ -33,5 +33,9 @@ class HangmanRepository @Inject constructor(
 
     fun updateScore(userName: String, score: Int){
         scoredao.updateScore(score, userName)
+    }
+
+    fun getScores(): List<Score>{
+        return scoredao.getScores()
     }
 }

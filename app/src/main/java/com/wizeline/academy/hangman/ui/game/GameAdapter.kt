@@ -3,11 +3,13 @@ package com.wizeline.academy.hangman.ui.game
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.flexbox.FlexboxLayoutManager
 import com.wizeline.academy.hangman.data.model.Letter
 import com.wizeline.academy.hangman.databinding.ItemLetterBinding
+
 
 class GameAdapter : ListAdapter<Letter, GameAdapter.GameViewHolder>(DIFF_CALLBACK) {
 
@@ -36,6 +38,13 @@ class GameAdapter : ListAdapter<Letter, GameAdapter.GameViewHolder>(DIFF_CALLBAC
                     itemLetter.text = ""
                     itemLetter.visibility = View.INVISIBLE
                     itemLetterLy.visibility = View.INVISIBLE
+
+                   /* val params: ViewGroup.LayoutParams = itemLetterBox.layoutParams
+                    val flexboxLp = params as FlexboxLayoutManager.LayoutParams
+                    flexboxLp.isWrapBefore = true
+                    flexboxLp.width = 0
+                    itemLetterBox.layoutParams = params*/
+
                 }
             }
         }

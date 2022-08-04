@@ -9,3 +9,5 @@ const val TIME_SECONDS: Long = 300
 
 const val CORRECT_GUESS: Int= 25
 const val INCORRECT_GUESS: Int = -10
+
+const val MAX_ATTEMPTS: Int = 10

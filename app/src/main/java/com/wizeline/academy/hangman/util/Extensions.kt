@@ -1,6 +1,7 @@
 package com.wizeline.academy.hangman.util
 
 import com.wizeline.academy.hangman.data.model.Letter
+import com.wizeline.academy.hangman.data.model.Score
 
 
 fun String?.isValid(): Boolean = !this.isNullOrEmpty()
@@ -35,3 +36,25 @@ fun List<Letter>.setVisibleLetter(letter: String): List<Letter>{
 fun List<Letter>.hasLetter(letter: String): Boolean =  this.any { it.letter.uppercase() == letter.uppercase() }
 fun List<Letter>.isVisible(letter: String): Boolean =  this.any { it.letter.uppercase() == letter.uppercase() && it.isVisible }
 fun List<Letter>.isWordVisible(): Boolean = this.all { it.letter != "" && it.isVisible }
+
+fun List<Letter>.showWord(): List<Letter>{
+    val wordsList = mutableListOf<Letter>()
+
+    this.map {
+        wordsList.add(
+            Letter(it.letter, true)
+        )
+    }
+    return wordsList
+}
+
+fun List<Score>.setPosition(): List<Score>{
+    val wordsList = mutableListOf<Score>()
+
+    this.mapIndexed { index, item ->
+        wordsList.add(
+            Score(position = index + 1, score = item.score, userName = item.userName)
+        )
+    }
+    return wordsList
+}

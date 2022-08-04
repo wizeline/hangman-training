@@ -23,4 +23,5 @@
     <string name="dialog_try_again">Try again</string>
     <string name="dialog_image_content">Image_face</string>
     <string name="dialog_time_title">Time\'s up!</string>
+    <string name="game_attempts_max">You reach the maximum of attempts</string>
 </resources>

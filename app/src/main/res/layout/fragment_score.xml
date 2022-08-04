@@ -68,7 +68,7 @@
             app:layout_constraintTop_toBottomOf="@+id/score_sparkles_left" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/score_listview"
+            android:id="@+id/score_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/border_edittext"
@@ -88,7 +88,7 @@
             android:backgroundTint="@color/blue_200"
             android:layout_marginTop="@dimen/padding_screen_big"
             android:text="@string/score_btn_start"
-            app:layout_constraintTop_toBottomOf="@+id/score_listview"
+            app:layout_constraintTop_toBottomOf="@+id/score_list"
             />
 
 

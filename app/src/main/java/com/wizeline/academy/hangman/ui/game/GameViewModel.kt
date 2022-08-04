@@ -66,11 +66,15 @@ class GameViewModel @Inject constructor(
                 onSuccess = { it ->
                     val movies =  it.result.filter { movies -> movies.original_language.contains("en") }
                     val re = "[^A-Za-z0-9 ]".toRegex()
-                    _movie.value = re.replace(movies[0].title, "").toCharArray().map { item -> item.toString() }.toTypedArray()
                     _wordCounter.value = (_wordCounter.value?.toInt() ?: 0) + 1
 
                     if((_wordCounter.value?.toInt() ?: 0) > MAX_WORDS){
                         endGame(true)
+                        val emptyArray : Array<String> = emptyArray()
+                        _movie.value = emptyArray
+                    } else {
+                        val random = (1 until movies.size).random()
+                        _movie.value = re.replace(movies[random].title, "").toCharArray().map { item -> item.toString() }.toTypedArray()
                     }
                 },
                 onError = {

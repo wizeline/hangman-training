@@ -26,7 +26,9 @@ class ScoreAdapter : ListAdapter<Score, ScoreAdapter.ScoreViewHolder>(DIFF_CALLB
 
         fun bind(score: Score) {
             binding.apply {
-
+                itemScore.text = score.score.toString()
+                itemUsername.text = score.userName
+                itemPosition.text = "# ${score.position}"
             }
         }
     }
