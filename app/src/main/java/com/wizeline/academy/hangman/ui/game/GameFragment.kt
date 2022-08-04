@@ -166,7 +166,7 @@ class GameFragment: Fragment() {
 
     private fun searchLetter(letter: String){
 
-        if(pictureCounter >= MAX_ATTEMPTS){
+        if(pictureCounter > MAX_ATTEMPTS){
             setHint()
             Toast.makeText(context, getString(R.string.game_attempts_max), Toast.LENGTH_SHORT).show()
         } else {
