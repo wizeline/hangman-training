@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">Hangman</string>
+    <string name="app_date">Wizeline 2022</string>
+    <string name="home_title">Hangman</string>
+    <string name="home_subtitle">-A Wizeline Academy Project</string>
+    <string name="home_executor_label">Player\'s name</string>
+    <string name="home_edit_placeholder">e.g. hangaman master</string>
+    <string name="home_start_btn">Start</string>
+    <string name="wave_content_description">image_wave</string>
+    <string name="game_title">Don\'t let them hang me!</string>
+    <string name="hangman_image">hangman_image</string>
+    <string name="game_next_btn">Next</string>
+    <string name="game_hint_btn">Hint</string>
+    <string name="invalid_username">Invalid Player\'s name</string>
+    <string name="exists_username">Player\'s name already exists</string>
+    <string name="game_score">Score: %1$d </string>
+    <string name="game_word_counter"> %1$d/%2$d</string>
+    <string name="score_game_over">GAME OVER</string>
+    <string name="score_top_ten">Top 10 Scores</string>
+    <string name="score_btn_start">Retry</string>
+    <string name="score_btn_finish">Finish</string>
+    <string name="dialog_leaderboard">Leaderboard</string>
+    <string name="dialog_try_again">Try again</string>
+    <string name="dialog_image_content">Image_face</string>
+    <string name="dialog_time_title">Time\'s up!</string>
+    <string name="game_attempts_max">You reach the maximum of attempts</string>
 </resources>

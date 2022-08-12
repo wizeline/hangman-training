@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="header_size">280dp</dimen>
+    <dimen name="padding_screen_big">30dp</dimen>
+    <dimen name="padding_screen">20dp</dimen>
+    <dimen name="padding_screen_small">10dp</dimen>
+    <dimen name="logo_size">100dp</dimen>
+    <dimen name="margin_form">50dp</dimen>
+    <dimen name="image_size">60dp</dimen>
+    <dimen name="image_hang_size">100dp</dimen>
+
+
+    <dimen name="text_title">28sp</dimen>
+    <dimen name="text_subtitle">18sp</dimen>
+    <dimen name="text_regular">14sp</dimen>
+    <dimen name="text_small">12sp</dimen>
+    <dimen name="dialog_size">400dp</dimen>
+    <dimen name="padding_max">80dp</dimen>
+</resources>
